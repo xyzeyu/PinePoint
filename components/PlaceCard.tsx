@@ -15,17 +15,24 @@ export default function PlaceCard({ place }: PlaceCardProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const [flickrAttempt, setFlickrAttempt] = useState<number>(0);
   
   // Convert Flickr URLs to direct image URLs
-  const convertFlickrUrlToImageUrl = (flickrUrl: string): string => {
+  const convertFlickrUrlToImageUrl = (flickrUrl: string, attempt: number = 0): string => {
     try {
       // Extract photo ID from Flickr URL
       // Format: https://www.flickr.com/photos/203457212@N02/54768214881/in/dateposted-public/
       const match = flickrUrl.match(/\/photos\/[^\/]+\/(\d+)\//); 
       if (match && match[1]) {
         const photoId = match[1];
-        // Convert to direct Flickr image URL (medium size)
-        return `https://live.staticflickr.com/${photoId.slice(-4)}/${photoId}_b.jpg`;
+        // Try multiple Flickr direct image URL formats
+        const formats = [
+          `https://live.staticflickr.com/65535/${photoId}_c.jpg`, // medium size
+          `https://live.staticflickr.com/65535/${photoId}_b.jpg`, // large size
+          `https://live.staticflickr.com/65535/${photoId}_z.jpg`, // medium 640
+          `https://live.staticflickr.com/65535/${photoId}_m.jpg`, // small 240
+        ];
+        return formats[attempt] || formats[0];
       }
     } catch (error) {
       console.log('Error converting Flickr URL:', error);
@@ -42,7 +49,7 @@ export default function PlaceCard({ place }: PlaceCardProps) {
     if (hasRealImages && !imageError) {
       const originalUrl = place.images![currentImageIndex];
       if (originalUrl.includes('flickr.com')) {
-        return convertFlickrUrlToImageUrl(originalUrl);
+        return convertFlickrUrlToImageUrl(originalUrl, flickrAttempt);
       }
       return originalUrl;
     }
@@ -77,6 +84,7 @@ export default function PlaceCard({ place }: PlaceCardProps) {
       setCurrentImageIndex((prev) => (prev + 1) % place.images!.length);
       setImageError(false);
       setImageLoaded(false);
+      setFlickrAttempt(0); // Reset Flickr attempt for new image
     }
   };
 
@@ -85,11 +93,22 @@ export default function PlaceCard({ place }: PlaceCardProps) {
       setCurrentImageIndex((prev) => (prev - 1 + place.images!.length) % place.images!.length);
       setImageError(false);
       setImageLoaded(false);
+      setFlickrAttempt(0); // Reset Flickr attempt for new image
     }
   };
 
   const handleImageError = () => {
     console.log(`Image failed to load for ${place.name}:`, photoUrl);
+    
+    // If it's a Flickr image and we haven't tried all formats yet, try the next format
+    if (hasRealImages && place.images![currentImageIndex].includes('flickr.com') && flickrAttempt < 3) {
+      console.log(`Trying Flickr format ${flickrAttempt + 1} for ${place.name}`);
+      setFlickrAttempt(prev => prev + 1);
+      setImageLoaded(false);
+      return;
+    }
+    
+    // All Flickr formats failed or it's not a Flickr image, show error
     setImageError(true);
   };
 
