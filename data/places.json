@@ -144,18 +144,7 @@
     "images": ["farmers-daughter-restaurant"]
   },
 
-  {
-    "id": "cafe-by-ruins-dua",
-    "name": "Café by the Ruins Dua",
-    "type": "Restaurant",
-    "google_rating": 4.4,
-    "google_reviews_snippet": "Modernized version of Café by the Ruins; heritage-inspired dishes, champorado, longganisa, bread.",
-    "lat": 16.4120,
-    "lng": 120.5950,
-    "address": "Upper Session Rd. / Shuntug St. corner, Baguio City",
-    "directions": "🚶 Walk: From SM to Upper Session Rd. / Shuntug St. corner. ~5–8 mins.",
-    "images": []
-  },
+
   {
     "id": "mamas-table",
     "name": "Mama's Table (by reservation only)",
@@ -204,18 +193,7 @@
     "directions": "🚕 Taxi/Grab: From SM to Kisad Rd. near Burnham Park. ~5–7 mins.",
     "images": ["canto-bogchi-joint"]
   },
-  {
-    "id": "arcas-yard-restaurant",
-    "name": "Arca's Yard",
-    "type": "Restaurant",
-    "google_rating": 4.6,
-    "google_reviews_snippet": "Known for its camote pie, Cordilleran comfort food, and museum-like vibe.",
-    "lat": 16.4000,
-    "lng": 120.6150,
-    "address": "Tiptop/Ambuklao Road, Baguio City",
-    "directions": "🛻 Jeep: From SM, go to Session Rd. → ride Pacdal/Tiptop jeep (₱15–20). Drop at Tiptop/Ambuklao Rd. → 🚶 3–5 mins.",
-    "images": []
-  },
+
   {
     "id": "kapetirya",
     "name": "Kapetirya",
@@ -252,18 +230,7 @@
     "directions": "🚌 Jeepney: Board jeepneys going to Trancoville or Aurora Hill at BPI (AURORA HILL) and near SM (TRANCOVILLE). Fare: ₱12-14. Travel Time: 10-15 minutes. Get off at: Sumulong/Upper Bonifacio Street. Walk 2-4 minutes to café.",
     "images": ["taza-by-kayu"]
   },
-  {
-    "id": "studio-cafe",
-    "name": "Studio Cafe",
-    "type": "Cafe",
-    "google_rating": 4.2,
-    "google_reviews_snippet": "Quiet and conveniently tucked in a photo studio on Session Road—ideal for people-watching or unwinding when the city's bustling.",
-    "lat": 16.4103,
-    "lng": 120.5958,
-    "address": "Session Road, Baguio City",
-    "directions": "🚶 Walk: From SM, head to Session Road (3–5 mins). Located along Session, so no jeep needed.",
-    "images": []
-  },
+
   {
     "id": "common-ground",
     "name": "Common Ground",
@@ -324,18 +291,7 @@
     "directions": "🚶 Walk: From SM, go down to Upper Bonifacio St. (about 8–10 mins walk from Session Road).",
     "images": ["il-ilengan-cafe"]
   },
-  {
-    "id": "arcas-yard",
-    "name": "Arca's Yard",
-    "type": "Cafe",
-    "google_rating": 4.6,
-    "google_reviews_snippet": "A peaceful café-museum-library hybrid with sweeping Cordillera views—perfect for reading over a strong Benguet coffee.",
-    "lat": 16.4000,
-    "lng": 120.6150,
-    "address": "Tiptop/Ambuklao Road, Baguio City",
-    "directions": "🚌 Ride: From SM, walk to Session Road → ride a Pacdal/Marcos Highway jeep (₱15–20). Ask to drop at Tiptop/Ambuklao Road → 🚶 3–5 mins.",
-    "images": []
-  },
+
   {
     "id": "marauders-brew-cafe",
     "name": "Marauder's Brew Café",
