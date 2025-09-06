@@ -2,14 +2,42 @@
 // This maps place IDs to their corresponding local image assets
 
 const placeImages: Record<string, any> = {
-  // For now, we'll use placeholder images until you add the actual photos
-  // You can replace these with actual require() statements once you add the photos to assets/places/
+  // Cafes
+  'kapetirya': require('@/assets/places/kapetirya.jpg'),
+  'hotcat-specialty-coffee': require('@/assets/places/hotcat-specialty-coffee.jpg'),
+  'taza-by-kayu': require('@/assets/places/taza-by-kayu.jpg'),
+  'common-ground': require('@/assets/places/common-ground.jpg'),
+  'marauders-brew-cafe': require('@/assets/places/marauders-brew-cafe.jpg'),
+  'hatch-coffee': require('@/assets/places/hatch-coffee.jpg'),
+  'flower-cafe': require('@/assets/places/flower-cafe.jpg'),
+  'hygge-library-cafe': require('@/assets/places/hygge-library-cafe.jpg'),
+  'peakcup-coffee': require('@/assets/places/peakcup-coffee.jpg'),
+  'ginto-cafe': require('@/assets/places/ginto-cafe.jpg'),
+  'scout-burrows': require('@/assets/places/scout-burrows.jpg'),
+  'il-ilengan-cafe': require('@/assets/places/il-ilengan-cafe.jpg'),
+  'guesthaven-coffee': require('@/assets/places/guesthaven-coffee.jpg'),
+  'rebel-bakehouse': require('@/assets/places/rebel-bakehouse.jpg'),
+  'sweet-stop': require('@/assets/places/sweet-stop.jpg'),
+  'brew-alchemy': require('@/assets/places/brew-alchemy.jpg'),
   
-  // Example of how to add local images:
-  // 'kapetirya': require('@/assets/places/kapetirya.jpg'),
-  // 'hotcat-specialty-coffee': require('@/assets/places/hotcat-specialty-coffee.jpg'),
+  // Accommodations
+  'cozynest-rentals': require('@/assets/places/cozynest-rentals.jpg'),
+  'metro-pines-inn': require('@/assets/places/metro-pines-inn.jpg'),
+  'kamiseta-hotel': require('@/assets/places/kamiseta-hotel.jpg'),
+  'whitehouse-lord-scents': require('@/assets/places/whitehouse-lord-scents.jpg'),
+  'secret-cabin': require('@/assets/places/secret-cabin.jpg'),
+  '1896-bb': require('@/assets/places/1896-bb.jpg'),
+  'atenara-house': require('@/assets/places/atenara-house.jpg'),
   
-  // For now, all entries will fallback to Unsplash
+  // Restaurants
+  'ozark-diner-bnb': require('@/assets/places/ozark-diner-bnb.jpg'),
+  'qilla-restaurant': require('@/assets/places/qilla-restaurant.jpg'),
+  'ili-likha-artists-village': require('@/assets/places/ili-likha-artists-village.jpg'),
+  'chaya-restaurant': require('@/assets/places/chaya-restaurant.jpg'),
+  'farmers-daughter-restaurant': require('@/assets/places/farmers-daughter-restaurant.jpg'),
+  'oh-my-gulay': require('@/assets/places/oh-my-gulay.jpg'),
+  'hill-station': require('@/assets/places/hill-station.jpg'),
+  'canto-bogchi-joint': require('@/assets/places/canto-bogchi-joint.jpg'),
 };
 
 export function getPlaceImageSource(placeId: string): { uri: string } | number {
@@ -68,6 +96,18 @@ export function hasLocalImage(placeId: string): boolean {
 }
 
 // Instructions for adding local images:
-// 1. Add your image files to assets/places/ folder
-// 2. Update the placeImages object above with require() statements
-// 3. Example: 'kapetirya': require('@/assets/places/kapetirya.jpg'),
+// 1. Create assets/places/ folder in your project root
+// 2. Add your image files (JPG, PNG, WebP formats supported)
+// 3. Name them exactly as shown above (e.g., kapetirya.jpg, hotcat-specialty-coffee.jpg)
+// 4. The images will be bundled with your app and load instantly
+//
+// Benefits of local images:
+// - Always available offline
+// - Instant loading (no network requests)
+// - Better user experience
+// - Smaller app bundle than you might think (images are optimized)
+//
+// To add new images:
+// 1. Add the image file to assets/places/
+// 2. Add a require() statement above
+// 3. The app will automatically use the local image
