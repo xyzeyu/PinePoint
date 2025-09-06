@@ -1,70 +1,59 @@
-import { getDownloadURL, ref } from 'firebase/storage';
-import { storage } from './firebase';
-
-// Firebase Storage image mapping for places
-const firebaseImagePaths: Record<string, string> = {
+// Direct Firebase Storage URLs for places
+const firebaseImageUrls: Record<string, string> = {
   // Cafes
-  'kapetirya': 'PinePoint/Kapetirya.jpg',
-  'hotcat-specialty-coffee': 'PinePoint/Hotcat Specialty Coffee.jpg',
-  'taza-by-kayu': 'PinePoint/Taza by Kayu.jpg',
-  'common-ground': 'PinePoint/Common Ground.jpg',
-  'marauders-brew-cafe': 'PinePoint/Marauders Brew Cafe.jpg',
-  'hatch-coffee': 'PinePoint/Hatch Coffee.jpg',
-  'flower-cafe': 'PinePoint/The Flower Cafe.jpg',
-  'hygge-library-cafe': 'PinePoint/Hygge Library Cafe.jpg',
-  'peakcup-coffee': 'PinePoint/Peakcup Coffee.jpg',
-  'ginto-cafe': 'PinePoint/Ginto Cafe.jpg',
-  'scout-burrows': 'PinePoint/Scout Burrows Little Milkyway.jpg',
-  'il-ilengan-cafe': 'PinePoint/Il-Ilengan Cafe.jpg',
-  'guesthaven-coffee': 'PinePoint/Guesthaven Coffee.jpg',
-  'rebel-bakehouse': 'PinePoint/Rebel Bakehouse Hatch.jpg',
-  'sweet-stop': 'PinePoint/Sweet Stop.jpg',
-  'brew-alchemy': 'PinePoint/Brew & Alchemy.jpg',
+  'kapetirya': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FKapetirya.jpg?alt=media',
+  'hotcat-specialty-coffee': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FHotcat%20Specialty%20Coffee.jpg?alt=media',
+  'taza-by-kayu': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2Ftaza%20by%20kayu.jpg?alt=media',
+  'common-ground': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FCommon%20Ground.jpg?alt=media',
+  'marauders-brew-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FMarauder\'s%20brew%20cafe.jpg?alt=media',
+  'hatch-coffee': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2Fhatch%20cofeee.jpg?alt=media',
+  'flower-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2Fthe%20flower%20cafe.jpg?alt=media',
+  'hygge-library-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FHygge%20Library%20Cafe.jpg?alt=media',
+  'peakcup-coffee': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FPeakcup.jpg?alt=media',
+  'ginto-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FGinto.jpg?alt=media',
+  'scout-burrows': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FScout%20Burrows.jpg?alt=media',
+  'il-ilengan-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FIl-ilengan.jpg?alt=media',
+  'guesthaven-coffee': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FGuest%20Haven.jpg?alt=media',
+  'rebel-bakehouse': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FRebel.jpg?alt=media',
+  'sweet-stop': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FSweet%20stop.jpg?alt=media',
+  'brew-alchemy': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FBrew%20and%20Alchemy.jpg?alt=media',
+  'rockyard-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FRockyard%20Cafe.jpg?alt=media',
   
   // Accommodations
-  'cozynest-rentals': 'PinePoint/CozyNest Rentals (Brenthill).jpg',
-  'metro-pines-inn': 'PinePoint/Metro Pines Inn.jpg',
-  'kamiseta-hotel': 'PinePoint/Kamiseta Hotel.jpg',
-  'whitehouse-lord-scents': 'PinePoint/Whitehouse of the Lord of Scents.jpg',
-  'secret-cabin': 'PinePoint/Secret Cabin.jpg',
-  '1896-bb': 'PinePoint/1896 Bed & Breakfast.jpg',
-  'atenara-house': 'PinePoint/Atenara House.jpg',
+  'cozynest-rentals': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FCozyRest%20Condotel.jpg?alt=media',
+  'metro-pines-inn': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FMetro%20Pines%20Inn.jpg?alt=media',
+  'kamiseta-hotel': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FKamiseta%20Hotel.jpg?alt=media',
+  'whitehouse-lord-scents': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FWhitehouse%20of%20the%20Lord%20of%20Scents.jpg?alt=media',
+  'secret-cabin': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FScout%20Burrows.jpg?alt=media',
+  '1896-bb': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2F1896%20Bed%20%26%20Breakfast.jpg?alt=media',
+  'atenara-house': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FAtenara%20House.jpg?alt=media',
   
   // Restaurants
-  'ozark-diner-bnb': 'PinePoint/Ozark Diner + BnB.jpg',
-  'qilla-restaurant': 'PinePoint/Qilla Restaurant.jpg',
-  'ili-likha-artists-village': 'PinePoint/Ili-Likha Artists Village.jpg',
-  'chaya-restaurant': 'PinePoint/Chaya.jpg',
-  'farmers-daughter-restaurant': 'PinePoint/Farmers Daughter Restaurant.jpg',
-  'oh-my-gulay': 'PinePoint/Oh My Gulay (OMG).jpg',
-  'hill-station': 'PinePoint/Hill Station.jpg',
-  'canto-bogchi-joint': 'PinePoint/Canto Bogchi Joint.jpg',
+  'ozark-diner-bnb': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FOzark%20Diner.jpg?alt=media',
+  'qilla-restaurant': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FQilla.jpg?alt=media',
+  'ili-likha-artists-village': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2Fili-likha.jpg?alt=media',
+  'chaya-restaurant': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FChaya.jpg?alt=media',
+  'farmers-daughter-restaurant': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FFarmer\'s%20Daughter.jpg?alt=media',
+  'oh-my-gulay': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FOh%20My%20Gulay.jpg?alt=media',
+  'hill-station': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FHill%20Station.jpg?alt=media',
+  'canto-bogchi-joint': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2Fcanto.jpg?alt=media',
+  'mamas-table': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/PinePoint%2FMama\'s%20table.jpg?alt=media',
 };
-
-// Cache for Firebase Storage URLs
-const urlCache: Record<string, string> = {};
 
 // Fallback image for places without Firebase Storage images
 const fallbackImage = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop';
 
 export async function getPlaceImageSource(placeId: string): Promise<{ uri: string }> {
-  // Check cache first
-  if (urlCache[placeId]) {
-    console.log(`Using cached Firebase image for ${placeId}`);
-    return { uri: urlCache[placeId] };
+  // Check if we have a direct Firebase URL for this place
+  if (firebaseImageUrls[placeId]) {
+    console.log(`Using Firebase image for ${placeId}`);
+    return { uri: firebaseImageUrls[placeId] };
   }
   
-  // Try to get Firebase Storage image
-  if (firebaseImagePaths[placeId]) {
-    try {
-      const imageRef = ref(storage, firebaseImagePaths[placeId]);
-      const downloadURL = await getDownloadURL(imageRef);
-      urlCache[placeId] = downloadURL;
-      console.log(`Loaded Firebase image for ${placeId}`);
-      return { uri: downloadURL };
-    } catch (error) {
-      console.warn(`Failed to load Firebase image for ${placeId}:`, error);
-    }
+  // If placeId is already a URL (from images array), use it directly
+  if (placeId.startsWith('https://')) {
+    console.log(`Using direct URL for image: ${placeId}`);
+    return { uri: placeId };
   }
   
   // Fallback to default image
@@ -72,57 +61,51 @@ export async function getPlaceImageSource(placeId: string): Promise<{ uri: strin
   return { uri: fallbackImage };
 }
 
-// Synchronous version for immediate use (returns cached or fallback)
+// Synchronous version for immediate use
 export function getPlaceImageSourceSync(placeId: string): { uri: string } {
-  if (urlCache[placeId]) {
-    return { uri: urlCache[placeId] };
+  // Check if we have a direct Firebase URL for this place
+  if (firebaseImageUrls[placeId]) {
+    return { uri: firebaseImageUrls[placeId] };
   }
+  
+  // If placeId is already a URL (from images array), use it directly
+  if (placeId.startsWith('https://')) {
+    return { uri: placeId };
+  }
+  
   return { uri: fallbackImage };
 }
 
-// Initialize Firebase Storage images
+// Initialize Firebase Storage images (now just logs since we use direct URLs)
 export async function initializeFirebaseImages(): Promise<void> {
-  console.log('Initializing Firebase Storage images...');
-  
-  // Pre-load some common images
-  const commonPlaces = ['kapetirya', 'hotcat-specialty-coffee', 'common-ground', 'kamiseta-hotel'];
-  
-  for (const placeId of commonPlaces) {
-    try {
-      await getPlaceImageSource(placeId);
-    } catch (error) {
-      console.warn(`Failed to pre-load image for ${placeId}:`, error);
-    }
-  }
-  
-  console.log('Firebase Storage images initialized');
+  console.log('Firebase Storage images ready - using direct URLs');
 }
 
 // Compatibility functions
 export function hasFirebaseImage(placeId: string): boolean {
-  return !!firebaseImagePaths[placeId];
+  return !!firebaseImageUrls[placeId] || placeId.startsWith('https://');
 }
 
 export function isFirebaseLoaded(): boolean {
-  return Object.keys(urlCache).length > 0;
+  return true; // Always loaded since we use direct URLs
 }
 
-export function getFirebaseCache(): Record<string, string> {
-  return { ...urlCache };
+export function getFirebaseImageUrls(): Record<string, string> {
+  return { ...firebaseImageUrls };
 }
 
 // Firebase Storage Integration:
-// This system uses Firebase Storage to serve your actual place photos
-// with proper caching and fallback mechanisms.
+// This system uses direct Firebase Storage URLs to serve your actual place photos
+// with fallback mechanisms for missing images.
 //
 // Benefits:
 // - Uses your actual photos from Firebase Storage
-// - Automatic caching for better performance
+// - Direct URLs for better performance (no SDK calls needed)
 // - Fallback system for missing images
 // - Secure and reliable Firebase CDN
 //
 // How it works:
-// 1. Firebase Storage paths are mapped to place IDs
-// 2. Images are loaded asynchronously and cached
-// 3. Fallback to default image if Firebase image fails
-// 4. Pre-loading for common places to improve performance
+// 1. Direct Firebase Storage URLs are mapped to place IDs
+// 2. Images from place.images array are used directly if they're URLs
+// 3. Fallback to default image if no Firebase image is available
+// 4. Immediate loading since no async Firebase SDK calls are needed
