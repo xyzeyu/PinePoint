@@ -33,7 +33,7 @@ export default function HomeScreen() {
           <View style={styles.logoContainer}>
             <View style={styles.logo}>
               <Image 
-                source={{ uri: 'https://pub-e001eb4506b145aa938b5d3badbff6a5.r2.dev/attachments/2okr7pqs12i9rarzqm2ul' }}
+                source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2Flogo_only-removebg-preview.png?alt=media&token=b34f3cb7-72a3-4a68-9389-48ab34813ef7' }}
                 style={styles.logoImage}
                 resizeMode="contain"
               />
