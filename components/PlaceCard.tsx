@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Modal, ScrollView } from 'react-native';
 import { Star, MapPin, ExternalLink, Globe, X, ChevronLeft, ChevronRight } from 'lucide-react-native';
 import { Place } from '@/types';
@@ -16,23 +16,39 @@ export default function PlaceCard({ place }: PlaceCardProps) {
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   
-  // Auto-open Flickr link when place is displayed
-  useEffect(() => {
-    if (place.images && place.images.length > 0) {
-      const flickrUrl = place.images[0];
-      if (flickrUrl && flickrUrl.includes('flickr.com')) {
-        console.log(`Auto-opening Flickr link for ${place.name}:`, flickrUrl);
-        openExternalUrl(flickrUrl);
+  // Convert Flickr URLs to direct image URLs
+  const convertFlickrUrlToImageUrl = (flickrUrl: string): string => {
+    try {
+      // Extract photo ID from Flickr URL
+      // Format: https://www.flickr.com/photos/203457212@N02/54768214881/in/dateposted-public/
+      const match = flickrUrl.match(/\/photos\/[^\/]+\/(\d+)\//); 
+      if (match && match[1]) {
+        const photoId = match[1];
+        // Convert to direct Flickr image URL (medium size)
+        return `https://live.staticflickr.com/${photoId.slice(-4)}/${photoId}_b.jpg`;
       }
+    } catch (error) {
+      console.log('Error converting Flickr URL:', error);
     }
-  }, [place.id, place.images, place.name]); // Trigger when place changes
+    return flickrUrl; // Return original if conversion fails
+  };
   
   const isCafe = place.type === 'Cafe';
   const isAccommodation = place.type === 'Accommodation';
   const isRestaurant = place.type === 'Restaurant';
   const hasRealImages = place.images && place.images.length > 0;
   const hasPhoto = hasRealImages || isCafe || isAccommodation || isRestaurant;
-  const photoUrl = hasRealImages && !imageError ? place.images![currentImageIndex] : `https://images.unsplash.com/photo-${getPhotoId(place.id)}?w=400&h=300&fit=crop`;
+  const getPhotoUrl = () => {
+    if (hasRealImages && !imageError) {
+      const originalUrl = place.images![currentImageIndex];
+      if (originalUrl.includes('flickr.com')) {
+        return convertFlickrUrlToImageUrl(originalUrl);
+      }
+      return originalUrl;
+    }
+    return `https://images.unsplash.com/photo-${getPhotoId(place.id)}?w=400&h=300&fit=crop`;
+  };
+  const photoUrl = getPhotoUrl();
   const hasMultipleImages = hasRealImages && place.images!.length > 1;
   const handleOpenMaps = () => {
     openGoogleMapsUrl(place.id);
