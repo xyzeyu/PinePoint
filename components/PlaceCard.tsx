@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Modal, ScrollView } from 'react-native';
 import { Star, MapPin, ExternalLink, Globe, X, ChevronLeft, ChevronRight } from 'lucide-react-native';
 import { Place } from '@/types';
@@ -15,6 +15,17 @@ export default function PlaceCard({ place }: PlaceCardProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  
+  // Auto-open Flickr link when place is displayed
+  useEffect(() => {
+    if (place.images && place.images.length > 0) {
+      const flickrUrl = place.images[0];
+      if (flickrUrl && flickrUrl.includes('flickr.com')) {
+        console.log(`Auto-opening Flickr link for ${place.name}:`, flickrUrl);
+        openExternalUrl(flickrUrl);
+      }
+    }
+  }, [place.id, place.images, place.name]); // Trigger when place changes
   
   const isCafe = place.type === 'Cafe';
   const isAccommodation = place.type === 'Accommodation';
