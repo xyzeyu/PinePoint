@@ -1,104 +1,128 @@
-// Image assets mapping for places
-// Direct image URLs for reliable loading
+import { getDownloadURL, ref } from 'firebase/storage';
+import { storage } from './firebase';
 
-// High-quality Unsplash images mapped to each place
-const placeImageUrls: Record<string, string> = {
+// Firebase Storage image mapping for places
+const firebaseImagePaths: Record<string, string> = {
   // Cafes
-  'kapetirya': 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop',
-  'hotcat-specialty-coffee': 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop',
-  'taza-by-kayu': 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=300&fit=crop',
-  'common-ground': 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&h=300&fit=crop',
-  'marauders-brew-cafe': 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop',
-  'hatch-coffee': 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&h=300&fit=crop',
-  'flower-cafe': 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop',
-  'hygge-library-cafe': 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop',
-  'peakcup-coffee': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-  'ginto-cafe': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
-  'scout-burrows': 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400&h=300&fit=crop',
-  'il-ilengan-cafe': 'https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=400&h=300&fit=crop',
-  'guesthaven-coffee': 'https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400&h=300&fit=crop',
-  'rebel-bakehouse': 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=300&fit=crop',
-  'sweet-stop': 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&h=300&fit=crop',
-  'brew-alchemy': 'https://images.unsplash.com/photo-1545665225-b23b99e4d45e?w=400&h=300&fit=crop',
+  'kapetirya': 'PinePoint/Kapetirya.jpg',
+  'hotcat-specialty-coffee': 'PinePoint/Hotcat Specialty Coffee.jpg',
+  'taza-by-kayu': 'PinePoint/Taza by Kayu.jpg',
+  'common-ground': 'PinePoint/Common Ground.jpg',
+  'marauders-brew-cafe': 'PinePoint/Marauders Brew Cafe.jpg',
+  'hatch-coffee': 'PinePoint/Hatch Coffee.jpg',
+  'flower-cafe': 'PinePoint/The Flower Cafe.jpg',
+  'hygge-library-cafe': 'PinePoint/Hygge Library Cafe.jpg',
+  'peakcup-coffee': 'PinePoint/Peakcup Coffee.jpg',
+  'ginto-cafe': 'PinePoint/Ginto Cafe.jpg',
+  'scout-burrows': 'PinePoint/Scout Burrows Little Milkyway.jpg',
+  'il-ilengan-cafe': 'PinePoint/Il-Ilengan Cafe.jpg',
+  'guesthaven-coffee': 'PinePoint/Guesthaven Coffee.jpg',
+  'rebel-bakehouse': 'PinePoint/Rebel Bakehouse Hatch.jpg',
+  'sweet-stop': 'PinePoint/Sweet Stop.jpg',
+  'brew-alchemy': 'PinePoint/Brew & Alchemy.jpg',
   
   // Accommodations
-  'cozynest-rentals': 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop',
-  'metro-pines-inn': 'https://images.unsplash.com/photo-1564501049229-cc18ee5aef86?w=400&h=300&fit=crop',
-  'kamiseta-hotel': 'https://images.unsplash.com/photo-1566073112-1c3b4c71c1c8?w=400&h=300&fit=crop',
-  'whitehouse-lord-scents': 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop',
-  'secret-cabin-baguio': 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&h=300&fit=crop',
-  '1896-bb': 'https://images.unsplash.com/photo-1586023492675-c216d39128aa?w=400&h=300&fit=crop',
-  'atenara-house': 'https://images.unsplash.com/photo-1520637736862-4d197d17c93a?w=400&h=300&fit=crop',
+  'cozynest-rentals': 'PinePoint/CozyNest Rentals (Brenthill).jpg',
+  'metro-pines-inn': 'PinePoint/Metro Pines Inn.jpg',
+  'kamiseta-hotel': 'PinePoint/Kamiseta Hotel.jpg',
+  'whitehouse-lord-scents': 'PinePoint/Whitehouse of the Lord of Scents.jpg',
+  'secret-cabin': 'PinePoint/Secret Cabin.jpg',
+  '1896-bb': 'PinePoint/1896 Bed & Breakfast.jpg',
+  'atenara-house': 'PinePoint/Atenara House.jpg',
   
   // Restaurants
-  'ozark-diner-bnb': 'https://images.unsplash.com/photo-1414728735-6f71dcaae5bd?w=400&h=300&fit=crop',
-  'qilla-restaurant': 'https://images.unsplash.com/photo-1565299507-6678700f2ef2?w=400&h=300&fit=crop',
-  'ili-likha-artists-village': 'https://images.unsplash.com/photo-1504674900-24d2d516e702?w=400&h=300&fit=crop',
-  'chaya-restaurant': 'https://images.unsplash.com/photo-1579871734-a35c0844ec25?w=400&h=300&fit=crop',
-  'farmers-daughter-restaurant': 'https://images.unsplash.com/photo-1504674900-24d2d516e702?w=400&h=300&fit=crop',
-  'oh-my-gulay': 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
-  'hill-station': 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop',
-  'canto-bogchi-joint': 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=300&fit=crop',
+  'ozark-diner-bnb': 'PinePoint/Ozark Diner + BnB.jpg',
+  'qilla-restaurant': 'PinePoint/Qilla Restaurant.jpg',
+  'ili-likha-artists-village': 'PinePoint/Ili-Likha Artists Village.jpg',
+  'chaya-restaurant': 'PinePoint/Chaya.jpg',
+  'farmers-daughter-restaurant': 'PinePoint/Farmers Daughter Restaurant.jpg',
+  'oh-my-gulay': 'PinePoint/Oh My Gulay (OMG).jpg',
+  'hill-station': 'PinePoint/Hill Station.jpg',
+  'canto-bogchi-joint': 'PinePoint/Canto Bogchi Joint.jpg',
 };
 
-// Fallback Unsplash images for places without direct URLs
-const unsplashFallbacks: Record<string, string> = {
-  'studio-cafe': '1521017432531-fbd92d768814',
-  'arcas-yard': '1501339847302-ac426a4a7cbb',
-  'rockyard-cafe': '1559056199-641a0ac8b55e',
-  'cafe-by-ruins-dua': '1442512595331-e89e73853f31',
-  'mamas-table': '1504674900-24d2d516e702',
-  'arcas-yard-restaurant': '1414728735-6f71dcaae5bd',
-};
+// Cache for Firebase Storage URLs
+const urlCache: Record<string, string> = {};
 
-export function getPlaceImageSource(placeId: string): { uri: string } {
-  // First priority: Direct image URLs
-  if (placeImageUrls[placeId]) {
-    console.log(`Using direct image URL for ${placeId}`);
-    return { uri: placeImageUrls[placeId] };
+// Fallback image for places without Firebase Storage images
+const fallbackImage = 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop';
+
+export async function getPlaceImageSource(placeId: string): Promise<{ uri: string }> {
+  // Check cache first
+  if (urlCache[placeId]) {
+    console.log(`Using cached Firebase image for ${placeId}`);
+    return { uri: urlCache[placeId] };
   }
   
-  // Second priority: Unsplash fallback
-  if (unsplashFallbacks[placeId]) {
-    const photoId = unsplashFallbacks[placeId];
-    console.log(`Using Unsplash fallback image for ${placeId}`);
-    return { uri: `https://images.unsplash.com/photo-${photoId}?w=400&h=300&fit=crop` };
+  // Try to get Firebase Storage image
+  if (firebaseImagePaths[placeId]) {
+    try {
+      const imageRef = ref(storage, firebaseImagePaths[placeId]);
+      const downloadURL = await getDownloadURL(imageRef);
+      urlCache[placeId] = downloadURL;
+      console.log(`Loaded Firebase image for ${placeId}`);
+      return { uri: downloadURL };
+    } catch (error) {
+      console.warn(`Failed to load Firebase image for ${placeId}:`, error);
+    }
   }
   
-  // Default fallback
-  console.log(`Using default fallback image for ${placeId}`);
-  return { uri: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop' };
+  // Fallback to default image
+  console.log(`Using fallback image for ${placeId}`);
+  return { uri: fallbackImage };
 }
 
-// Initialize function for compatibility (no longer needed but kept for existing code)
-export async function initializeGooglePhotos(): Promise<void> {
-  console.log('Image system initialized with direct URLs');
+// Synchronous version for immediate use (returns cached or fallback)
+export function getPlaceImageSourceSync(placeId: string): { uri: string } {
+  if (urlCache[placeId]) {
+    return { uri: urlCache[placeId] };
+  }
+  return { uri: fallbackImage };
+}
+
+// Initialize Firebase Storage images
+export async function initializeFirebaseImages(): Promise<void> {
+  console.log('Initializing Firebase Storage images...');
+  
+  // Pre-load some common images
+  const commonPlaces = ['kapetirya', 'hotcat-specialty-coffee', 'common-ground', 'kamiseta-hotel'];
+  
+  for (const placeId of commonPlaces) {
+    try {
+      await getPlaceImageSource(placeId);
+    } catch (error) {
+      console.warn(`Failed to pre-load image for ${placeId}:`, error);
+    }
+  }
+  
+  console.log('Firebase Storage images initialized');
 }
 
 // Compatibility functions
-export function hasGooglePhotosImage(placeId: string): boolean {
-  return !!placeImageUrls[placeId];
+export function hasFirebaseImage(placeId: string): boolean {
+  return !!firebaseImagePaths[placeId];
 }
 
-export function isGooglePhotosLoaded(): boolean {
-  return true; // Always loaded since we use direct URLs
+export function isFirebaseLoaded(): boolean {
+  return Object.keys(urlCache).length > 0;
 }
 
-export function getGooglePhotosCache(): Record<string, string> {
-  return { ...placeImageUrls };
+export function getFirebaseCache(): Record<string, string> {
+  return { ...urlCache };
 }
 
-// Direct Image URLs Integration:
-// This system uses high-quality Unsplash images for reliable loading
-// without requiring API authentication or complex caching.
+// Firebase Storage Integration:
+// This system uses Firebase Storage to serve your actual place photos
+// with proper caching and fallback mechanisms.
 //
 // Benefits:
-// - Instant loading without API calls
-// - No authentication required
-// - Reliable image availability from Unsplash CDN
-// - Consistent image quality and sizing
+// - Uses your actual photos from Firebase Storage
+// - Automatic caching for better performance
+// - Fallback system for missing images
+// - Secure and reliable Firebase CDN
 //
 // How it works:
-// 1. Curated Unsplash URLs are mapped to place IDs
-// 2. Images load immediately with proper sizing parameters
-// 3. Fallback system for unmapped places
+// 1. Firebase Storage paths are mapped to place IDs
+// 2. Images are loaded asynchronously and cached
+// 3. Fallback to default image if Firebase image fails
+// 4. Pre-loading for common places to improve performance

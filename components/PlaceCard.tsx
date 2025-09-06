@@ -4,7 +4,7 @@ import { Star, MapPin, ExternalLink, Globe, X, ChevronLeft, ChevronRight, Refres
 import { Place } from '@/types';
 import { openExternalUrl, openGoogleMapsUrl } from '@/lib/maps';
 import { useTheme } from '@/contexts/ThemeContext';
-import { getPlaceImageSource, hasGooglePhotosImage, isGooglePhotosLoaded } from '@/lib/images';
+import { getPlaceImageSource, getPlaceImageSourceSync, initializeFirebaseImages } from '@/lib/images';
 
 interface PlaceCardProps {
   place: Place;
@@ -17,22 +17,37 @@ export default function PlaceCard({ place }: PlaceCardProps) {
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [imageKey, setImageKey] = useState<number>(0); // For forcing image refresh
+  const [imageSource, setImageSource] = useState<{ uri: string } | null>(null);
   
   const isCafe = place.type === 'Cafe';
   const isAccommodation = place.type === 'Accommodation';
   const isRestaurant = place.type === 'Restaurant';
   const hasRealImages = place.images && place.images.length > 0;
   const hasPhoto = hasRealImages || isCafe || isAccommodation || isRestaurant;
-  const getImageSource = () => {
-    if (hasRealImages && !imageError) {
-      // For now, we'll use the place ID as the image identifier
-      // This allows for easy mapping to local assets
-      const imageId = place.images![currentImageIndex];
-      return getPlaceImageSource(imageId);
+  const loadImageSource = useCallback(async () => {
+    try {
+      let source;
+      if (hasRealImages && !imageError) {
+        // For now, we'll use the place ID as the image identifier
+        // This allows for easy mapping to local assets
+        const imageId = place.images![currentImageIndex];
+        source = await getPlaceImageSource(imageId);
+      } else {
+        source = await getPlaceImageSource(place.id);
+      }
+      setImageSource(source);
+    } catch (error) {
+      console.warn('Failed to load image source:', error);
+      // Use sync fallback
+      const fallbackSource = getPlaceImageSourceSync(place.id);
+      setImageSource(fallbackSource);
     }
-    return getPlaceImageSource(place.id);
-  };
-  const imageSource = getImageSource();
+  }, [place.id, place.images, currentImageIndex, imageError, hasRealImages]);
+
+  // Load image source on mount and when dependencies change
+  useEffect(() => {
+    loadImageSource();
+  }, [loadImageSource]);
   const hasMultipleImages = hasRealImages && place.images!.length > 1;
   const handleOpenMaps = () => {
     openGoogleMapsUrl(place.id);
@@ -90,12 +105,10 @@ export default function PlaceCard({ place }: PlaceCardProps) {
     setImageKey(prev => prev + 1);
   }, [place.name]);
 
-  // Effect to refresh image when Google Photos loads
+  // Initialize Firebase images on mount
   useEffect(() => {
-    if (isGooglePhotosLoaded() && hasGooglePhotosImage(place.id)) {
-      refreshImage();
-    }
-  }, [place.id, refreshImage]);
+    initializeFirebaseImages();
+  }, []);
 
 
 
@@ -109,14 +122,16 @@ export default function PlaceCard({ place }: PlaceCardProps) {
       >
         {hasPhoto && (
           <View style={styles.photoContainer}>
-            <Image 
-              key={imageKey}
-              source={imageSource} 
-              style={styles.placePhoto}
-              resizeMode="cover"
-              onError={handleImageError}
-              onLoad={handleImageLoad}
-            />
+            {imageSource && (
+              <Image 
+                key={imageKey}
+                source={imageSource} 
+                style={styles.placePhoto}
+                resizeMode="cover"
+                onError={handleImageError}
+                onLoad={handleImageLoad}
+              />
+            )}
             {!imageLoaded && !imageError && (
               <View style={styles.imageLoadingOverlay}>
                 <Text style={styles.loadingText}>Loading...</Text>
@@ -239,14 +254,16 @@ export default function PlaceCard({ place }: PlaceCardProps) {
             
             <ScrollView style={styles.modalContent}>
               <View style={styles.modalPhotoContainer}>
-                <Image 
-                  key={imageKey}
-                  source={imageSource} 
-                  style={styles.modalPhoto}
-                  resizeMode="cover"
-                  onError={handleImageError}
-                  onLoad={handleImageLoad}
-                />
+                {imageSource && (
+                  <Image 
+                    key={imageKey}
+                    source={imageSource} 
+                    style={styles.modalPhoto}
+                    resizeMode="cover"
+                    onError={handleImageError}
+                    onLoad={handleImageLoad}
+                  />
+                )}
                 {!imageLoaded && !imageError && (
                   <View style={[styles.imageLoadingOverlay, styles.modalLoadingOverlay]}>
                     <Text style={styles.loadingText}>Loading...</Text>
