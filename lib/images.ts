@@ -9,16 +9,15 @@ const firebaseImageUrls: Record<string, string> = {
   'hatch-coffee': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2Fhatch%20cofeee.jpg?alt=media&token=3ae391e6-1473-4ba3-9cf4-af79a1f798c7',
   'flower-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2Fthe%20flower%20cafe.jpg?alt=media&token=c33d06e6-4a87-400e-99f8-7083362887da',
   'hygge-library-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FHygge%20Library%20Cafe.jpg?alt=media&token=497f0108-eb72-4d00-846e-450ec93debe9',
-  // Note: Using placeholder tokens for places not in your provided list
-  'peakcup-coffee': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FPeakcup.jpg?alt=media&token=b8c2e4f1-3a5d-4e7f-9c8b-1d2e3f4a5b6c',
-  'ginto-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FGinto.jpg?alt=media&token=c9d3e5f2-4b6e-4f8a-ad9c-2e3f4a5b6c7d',
-  'scout-burrows': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FScout%20Burrows.jpg?alt=media&token=d0e4f6a3-5c7f-4a9b-be0d-3f4a5b6c7d8e',
-  'il-ilengan-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FIl-ilengan.jpg?alt=media&token=e1f5a7b4-6d8a-4b0c-cf1e-4a5b6c7d8e9f',
-  'guesthaven-coffee': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FGuest%20Haven.jpg?alt=media&token=f2a6b8c5-7e9b-4c1d-da2f-5b6c7d8e9f0a',
-  'rebel-bakehouse': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FRebel.jpg?alt=media&token=a3b7c9d6-8f0c-4d2e-eb3a-6c7d8e9f0a1b',
-  'sweet-stop': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FSweet%20stop.jpg?alt=media&token=b4c8d0e7-9a1d-4e3f-fc4b-7d8e9f0a1b2c',
-  'brew-alchemy': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FBrew%20and%20Alchemy.jpg?alt=media&token=c5d9e1f8-0b2e-4f4a-ad5c-8e9f0a1b2c3d',
-  'rockyard-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FRockyard%20Cafe.jpg?alt=media&token=d6e0f2a9-1c3f-4a5b-be6d-9f0a1b2c3d4e',
+  'peakcup-coffee': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FPeakcup.jpg?alt=media&token=047ff1b7-d801-495e-a4ba-0d69e8849651',
+  'ginto-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FGinto.jpg?alt=media&token=50f0794b-1010-406e-829a-583ab6beceae',
+  'scout-burrows': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FScout%20Burrows.jpg?alt=media&token=909b7646-241d-41db-94bf-dc6d2763deb7',
+  'il-ilengan-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FIl-ilengan.jpg?alt=media&token=190bad07-37b4-4edc-9059-c12b0b8ff903',
+  'guesthaven-coffee': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FGuest%20Haven.jpg?alt=media&token=db45ce40-c0b5-418a-b9ee-21b07833fcb9',
+  'rebel-bakehouse': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FRebel.jpg?alt=media&token=f7cad3c7-3983-4fe9-9409-d4bd20cd46c3',
+  'sweet-stop': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FSweet%20stop.jpg?alt=media&token=92c904b3-da6c-4059-a2f5-afe85c8dcd9a',
+  'brew-alchemy': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FBrew%20and%20Alchemy.jpg?alt=media&token=ed7638be-5de1-4845-ac2b-bebce0052954',
+  'rockyard-cafe': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FRockyard%20Cafe.jpg?alt=media&token=52d7d228-2951-41f2-acec-05ddd691db97',
   
   // Accommodations
   'cozynest-rentals': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FCozyRest%20Condotel.jpg?alt=media&token=e6ca60fa-6a99-4c10-80f4-2ce2d88b2d9d',
@@ -30,15 +29,15 @@ const firebaseImageUrls: Record<string, string> = {
   'atenara-house': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FAtenara%20House.jpg?alt=media&token=9bca5c49-6d55-4e32-9aa0-3a5091464d12',
   
   // Restaurants
-  'ozark-diner-bnb': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FOzark%20Diner.jpg?alt=media&token=e7f1a3b0-2d4f-4b6c-cf7e-0a1b2c3d4e5f',
-  'qilla-restaurant': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FQilla.jpg?alt=media&token=f8a2b4c1-3e5a-4c7d-da8f-1b2c3d4e5f6a',
-  'ili-likha-artists-village': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2Fili-likha.jpg?alt=media&token=a9b3c5d2-4f6b-4d8e-eb9a-2c3d4e5f6a7b',
-  'chaya-restaurant': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FChaya.jpg?alt=media&token=b0c4d6e3-5a7c-4e9f-fc0b-3d4e5f6a7b8c',
-  'farmers-daughter-restaurant': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FFarmer\'s%20Daughter.jpg?alt=media&token=c1d5e7f4-6b8d-4f0a-ad1c-4e5f6a7b8c9d',
-  'oh-my-gulay': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FOh%20My%20Gulay.jpg?alt=media&token=d2e6f8a5-7c9e-4a1b-be2d-5f6a7b8c9d0e',
-  'hill-station': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FHill%20Station.jpg?alt=media&token=e3f7a9b6-8d0f-4b2c-cf3e-6a7b8c9d0e1f',
-  'canto-bogchi-joint': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2Fcanto.jpg?alt=media&token=f4a8b0c7-9e1a-4c3d-da4f-7b8c9d0e1f2a',
-  'mamas-table': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FMama\'s%20table.jpg?alt=media&token=a5b9c1d8-0f2b-4d4e-eb5a-8c9d0e1f2a3b',
+  'ozark-diner-bnb': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FOzark%20Diner.jpg?alt=media&token=040e62a4-ae79-4914-b1dc-7a0d4a9575db',
+  'qilla-restaurant': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FQilla.jpg?alt=media&token=96125e74-b0e9-4b2d-bc17-9c474c82c73c',
+  'ili-likha-artists-village': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2Fili-likha.jpg?alt=media&token=08b5f0bc-dab1-4f2b-8924-c9d7eec842c4',
+  'chaya-restaurant': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FChaya.jpg?alt=media&token=0a00bd4c-0835-4c7c-a8e5-02515eda401b',
+  'farmers-daughter-restaurant': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FFarmer\'s%20Daughter.jpg?alt=media&token=0b1921f9-5f4e-44dd-ae01-3233cf009239',
+  'oh-my-gulay': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FOh%20My%20Gulay.jpg?alt=media&token=04c7fc3e-fbe0-4342-b85c-cb018e8124bb',
+  'hill-station': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FHill%20Station.jpg?alt=media&token=4e2de78d-116a-4699-b715-6ad57910533e',
+  'canto-bogchi-joint': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2Fcanto.jpg?alt=media&token=98e6c40d-96d5-4b32-b2eb-aec781499967',
+  'mamas-table': 'https://firebasestorage.googleapis.com/v0/b/pinepoint-28ca9.firebasestorage.app/o/public%2FMama\'s%20table.jpg?alt=media&token=9c571be8-717f-43ac-8108-654bc573893b',
 };
 
 // Fallback image for places without Firebase Storage images
