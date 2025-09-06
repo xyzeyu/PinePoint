@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Modal, ScrollView } from 'react-native';
-import { Star, MapPin, ExternalLink, Globe, X, ChevronLeft, ChevronRight } from 'lucide-react-native';
+import { Star, MapPin, ExternalLink, Globe, X, ChevronLeft, ChevronRight, RefreshCw } from 'lucide-react-native';
 import { Place } from '@/types';
 import { openExternalUrl, openGoogleMapsUrl } from '@/lib/maps';
 import { useTheme } from '@/contexts/ThemeContext';
-import { getPlaceImageSource } from '@/lib/images';
+import { getPlaceImageSource, hasGooglePhotosImage, isGooglePhotosLoaded } from '@/lib/images';
 
 interface PlaceCardProps {
   place: Place;
@@ -16,6 +16,7 @@ export default function PlaceCard({ place }: PlaceCardProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [imageError, setImageError] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const [imageKey, setImageKey] = useState<number>(0); // For forcing image refresh
   
   const isCafe = place.type === 'Cafe';
   const isAccommodation = place.type === 'Accommodation';
@@ -82,6 +83,20 @@ export default function PlaceCard({ place }: PlaceCardProps) {
     setImageError(false);
   };
 
+  const refreshImage = useCallback(() => {
+    console.log(`Refreshing image for ${place.name}`);
+    setImageError(false);
+    setImageLoaded(false);
+    setImageKey(prev => prev + 1);
+  }, [place.name]);
+
+  // Effect to refresh image when Google Photos loads
+  useEffect(() => {
+    if (isGooglePhotosLoaded() && hasGooglePhotosImage(place.id)) {
+      refreshImage();
+    }
+  }, [place.id, refreshImage]);
+
 
 
   return (
@@ -95,6 +110,7 @@ export default function PlaceCard({ place }: PlaceCardProps) {
         {hasPhoto && (
           <View style={styles.photoContainer}>
             <Image 
+              key={imageKey}
               source={imageSource} 
               style={styles.placePhoto}
               resizeMode="cover"
@@ -109,6 +125,13 @@ export default function PlaceCard({ place }: PlaceCardProps) {
             {imageError && (
               <View style={styles.imageErrorOverlay}>
                 <Text style={styles.errorText}>Image unavailable</Text>
+                <TouchableOpacity 
+                  style={styles.refreshButton}
+                  onPress={refreshImage}
+                >
+                  <RefreshCw size={16} color="#666" />
+                  <Text style={styles.refreshText}>Retry</Text>
+                </TouchableOpacity>
               </View>
             )}
             {hasMultipleImages && (
@@ -217,6 +240,7 @@ export default function PlaceCard({ place }: PlaceCardProps) {
             <ScrollView style={styles.modalContent}>
               <View style={styles.modalPhotoContainer}>
                 <Image 
+                  key={imageKey}
                   source={imageSource} 
                   style={styles.modalPhoto}
                   resizeMode="cover"
@@ -231,6 +255,13 @@ export default function PlaceCard({ place }: PlaceCardProps) {
                 {imageError && (
                   <View style={[styles.imageErrorOverlay, styles.modalErrorOverlay]}>
                     <Text style={styles.errorText}>Image unavailable</Text>
+                    <TouchableOpacity 
+                      style={styles.refreshButton}
+                      onPress={refreshImage}
+                    >
+                      <RefreshCw size={20} color="#666" />
+                      <Text style={styles.refreshText}>Retry</Text>
+                    </TouchableOpacity>
                   </View>
                 )}
                 {hasMultipleImages && (
@@ -549,5 +580,21 @@ const styles = StyleSheet.create({
     color: '#999',
     fontSize: 14,
     fontFamily: 'System',
+    marginBottom: 8,
+  },
+  refreshButton: {
+    flexDirection: 'row' as const,
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    borderRadius: 16,
+    gap: 4,
+  },
+  refreshText: {
+    color: '#666',
+    fontSize: 12,
+    fontFamily: 'System',
+    fontWeight: '500' as const,
   },
 });
