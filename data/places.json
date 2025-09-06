@@ -9,7 +9,7 @@
     "lng": 120.5947,
     "address": "#20 Villamor St., Brgy. Lualhati, Baguio City",
     "directions": "🚌 Jeepney: From SM City Baguio, board jeepneys going to Mines View Park/City Camp. Fare: ₱12-15. Get off at The Mansion area, then walk 2-3 minutes to the hotel.",
-    "images": ["https://images.unsplash.com/photo-1566073112-1c3b4c71c1c8?w=400&h=300&fit=crop"]
+    "images": ["kamiseta-hotel"]
   },
   {
     "id": "secret-cabin-baguio",
@@ -21,7 +21,7 @@
     "lng": 120.5900,
     "address": "Petersville Subdivision, Camp 7, Baguio City",
     "directions": "🚌 Jeepney: From SM, take jeepneys heading to Camp 7/Kennon Road area. Fare: ₱12-15. Get off at Camp 7 junction, then walk 5-7 minutes to Petersville Subdivision.",
-    "images": ["https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&h=300&fit=crop"]
+    "images": ["secret-cabin"]
   },
   {
     "id": "cozynest-rentals",
@@ -33,7 +33,7 @@
     "lng": 120.5980,
     "address": "Upper Session Road, Baguio City",
     "directions": "🚶 Walk: From SM City Baguio, walk up Session Road towards Mines View direction. About 8-10 minutes walk. 🚌 Jeepney: Take Mines View Park bound jeepneys, get off at Upper Session Road.",
-    "images": ["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=300&fit=crop"]
+    "images": ["cozynest-rentals"]
   },
   {
     "id": "metro-pines-inn",
@@ -45,7 +45,7 @@
     "lng": 120.5850,
     "address": "Near Botanical Garden, Baguio City",
     "directions": "🚌 Jeepney: From SM, take jeepneys going to Botanical Garden/Teacher's Camp. Fare: ₱12-15. Get off near Botanical Garden entrance, short walk to the inn.",
-    "images": ["https://images.unsplash.com/photo-1564501049229-cc18ee5aef86?w=400&h=300&fit=crop"]
+    "images": ["metro-pines-inn"]
   },
   {
     "id": "whitehouse-lord-scents",
@@ -57,7 +57,7 @@
     "lng": 120.5970,
     "address": "Camp John Hay, Baguio City",
     "directions": "🚌 Jeepney: From SM, take jeepneys going to Camp John Hay. Fare: ₱12-15. Get off at Camp John Hay main gate, then walk or take a short tricycle ride inside the camp.",
-    "images": ["https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop"]
+    "images": ["whitehouse-lord-scents"]
   },
   {
     "id": "1896-bb",
@@ -69,7 +69,7 @@
     "lng": 120.5970,
     "address": "Near Burnham Park, Baguio City",
     "directions": "🚶 Walk: From SM City Baguio, walk towards Burnham Park area (5-7 minutes). 🚌 Jeepney: Take any jeepney going to Burnham Park/Public Market area.",
-    "images": ["https://images.unsplash.com/photo-1586023492675-c216d39128aa?w=400&h=300&fit=crop"]
+    "images": ["1896-bb"]
   },
   {
     "id": "atenara-house",
@@ -81,7 +81,7 @@
     "lng": 120.5820,
     "address": "Near Teacher's Camp, Baguio City",
     "directions": "🚌 Jeepney: From SM, take jeepneys going to Teacher's Camp/Botanical Garden. Fare: ₱12-15. Get off near Teacher's Camp entrance, short walk to the house.",
-    "images": ["https://images.unsplash.com/photo-1520637736862-4d197d17c93a?w=400&h=300&fit=crop"]
+    "images": ["atenara-house"]
   },
   {
     "id": "ozark-diner-bnb",
@@ -93,7 +93,7 @@
     "lng": 120.6100,
     "address": "Bareng Drive, Bakakeng, Baguio City",
     "directions": "🚕 Taxi/Grab: From SM to Bareng Drive, Bakakeng, near SLU Maryheights. ~10–15 mins.",
-    "images": ["https://images.unsplash.com/photo-1414728735-6f71dcaae5bd?w=400&h=300&fit=crop"]
+    "images": ["ozark-diner-bnb"]
   },
   {
     "id": "qilla-restaurant",
@@ -105,7 +105,7 @@
     "lng": 120.5940,
     "address": "Rimando Road, Baguio City",
     "directions": "🚶 Walk: From SM, go down Session Rd. → turn onto Rimando Rd. (near universities). ~8–10 mins.",
-    "images": ["https://images.unsplash.com/photo-1565299507-6678700f2ef2?w=400&h=300&fit=crop"]
+    "images": ["qilla-restaurant"]
   },
   {
     "id": "ili-likha-artists-village",
@@ -117,7 +117,7 @@
     "lng": 120.5920,
     "address": "Assumption Road, Baguio City",
     "directions": "🚶 Walk: From SM, head to Session Rd. → turn to Assumption Rd. (beside China Bank). 5–7 mins.",
-    "images": ["https://images.unsplash.com/photo-1504674900-24d2d516e702?w=400&h=300&fit=crop"]
+    "images": ["ili-likha-artists-village"]
   },
   {
     "id": "chaya-restaurant",
@@ -129,7 +129,7 @@
     "lng": 120.5900,
     "address": "Ferguson Road, Leonard Wood area, Baguio City",
     "directions": "🚕 Taxi/Grab: From SM to Ferguson Road, Leonard Wood area. ~7–10 mins.",
-    "images": ["https://images.unsplash.com/photo-1579871734-a35c0844ec25?w=400&h=300&fit=crop"]
+    "images": ["chaya-restaurant"]
   },
   {
     "id": "farmers-daughter-restaurant",
@@ -141,7 +141,7 @@
     "lng": 120.5750,
     "address": "Tam-awan Village, Baguio City",
     "directions": "🛻 Jeep: From SM, walk to Petron Harrison Rd. terminal → ride Tam-awan jeep (₱15). Drop at Tam-awan Village, resto is right across.",
-    "images": ["https://images.unsplash.com/photo-1504674900-24d2d516e702?w=400&h=300&fit=crop"]
+    "images": ["farmers-daughter-restaurant"]
   },
 
   {
@@ -178,7 +178,7 @@
     "lng": 120.5958,
     "address": "La Azotea Building (5th floor), Session Road, Baguio City",
     "directions": "🚶 Walk: From SM, go down Session Rd. → La Azotea Building (5th floor). ~5 mins.",
-    "images": ["https://images.unsplash.com/photo-1504674900-24d2d516e702?w=400&h=300&fit=crop"]
+    "images": ["oh-my-gulay"]
   },
   {
     "id": "hill-station",
@@ -190,7 +190,7 @@
     "lng": 120.5931,
     "address": "Casa Vallejo Bldg., Upper Session Rd, Baguio City",
     "directions": "🚶 Walk: From SM, head down to Upper Session Rd., Casa Vallejo Bldg. ~5–7 mins.",
-    "images": ["https://images.unsplash.com/photo-1414728735-6f71dcaae5bd?w=400&h=300&fit=crop"]
+    "images": ["hill-station"]
   },
   {
     "id": "canto-bogchi-joint",
@@ -202,7 +202,7 @@
     "lng": 120.5980,
     "address": "Kisad Rd. near Burnham Park, Baguio City",
     "directions": "🚕 Taxi/Grab: From SM to Kisad Rd. near Burnham Park. ~5–7 mins.",
-    "images": ["https://images.unsplash.com/photo-1565299507-6678700f2ef2?w=400&h=300&fit=crop"]
+    "images": ["canto-bogchi-joint"]
   },
   {
     "id": "arcas-yard-restaurant",
@@ -226,7 +226,7 @@
     "lng": 120.5958,
     "address": "Session Road, Baguio City",
     "directions": "🚶 Walk: From SM's main entrance, go down Session Road (3–5 mins). Located along Session, no jeep needed. Distance: ~650 meters from SM Baguio. Walking Time: 10 minutes. You are near if you see Donjjang Samgyupsal.",
-    "images": ["https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop"]
+    "images": ["kapetirya"]
   },
   {
     "id": "hotcat-specialty-coffee",
@@ -238,7 +238,7 @@
     "lng": 120.5940,
     "address": "Brent Road, Baguio City",
     "directions": "🚶 Walk: Distance: ~900 meters from SM Baguio. Walking Time: 12–15 minutes. You are near if you see: Brent Road and the gate of Brent International School. 🚌 Jeepney: Board at Post Office Loop or Session Road (near McDonald's). Fare: ₱13–₱15. Get off at Brent Road.",
-    "images": ["https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop"]
+    "images": ["hotcat-specialty-coffee"]
   },
   {
     "id": "taza-by-kayu",
@@ -250,7 +250,7 @@
     "lng": 120.5970,
     "address": "Upper Bonifacio Street, Baguio City",
     "directions": "🚌 Jeepney: Board jeepneys going to Trancoville or Aurora Hill at BPI (AURORA HILL) and near SM (TRANCOVILLE). Fare: ₱12-14. Travel Time: 10-15 minutes. Get off at: Sumulong/Upper Bonifacio Street. Walk 2-4 minutes to café.",
-    "images": ["https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=300&fit=crop"]
+    "images": ["taza-by-kayu"]
   },
   {
     "id": "studio-cafe",
@@ -274,7 +274,7 @@
     "lng": 120.5980,
     "address": "General Vicente Lim Street, Baguio City",
     "directions": "🚶 Walk: Distance: ~600 meters from SM City Baguio, located just behind Burnham Park on General Vicente Lim Street. Walking Time: 7–8 minutes. You are near if you see: Barangay Office Burnham-Legarda. 🚌 Jeepney: Board at Post Office Loop or Session Road. Look for Pacdal/Navy Base jeepneys. Fare: ₱13–₱15.",
-    "images": ["https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&h=300&fit=crop"]
+    "images": ["common-ground"]
   },
   {
     "id": "peakcup-coffee",
@@ -286,7 +286,7 @@
     "lng": 120.6100,
     "address": "Outlook Drive, Baguio City",
     "directions": "🚌 Ride: From SM, walk to Session Road → ride a Pacdal/Outlook Drive jeep (₱12–15). Ask to drop at Outlook Drive near hotels, then 🚶 5 mins.",
-    "images": ["https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop"]
+    "images": ["peakcup-coffee"]
   },
   {
     "id": "ginto-cafe",
@@ -298,7 +298,7 @@
     "lng": 120.6050,
     "address": "La Trinidad, Benguet",
     "directions": "🚌 Ride: From SM, walk to Session Road → ride a La Trinidad jeep (₱15). Ask to drop near Brgy. Shilan area, then 🚶 short walk.",
-    "images": ["https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop"]
+    "images": ["ginto-cafe"]
   },
   {
     "id": "scout-burrows",
@@ -310,7 +310,7 @@
     "lng": 120.5920,
     "address": "Quezon Hill, Baguio City",
     "directions": "🚌 Ride: From SM, go to Session Road → ride a Trancoville jeep (₱12). Ask to drop near Quezon Hill → 🚶 5 mins.",
-    "images": ["https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop"]
+    "images": ["scout-burrows"]
   },
   {
     "id": "il-ilengan-cafe",
@@ -322,7 +322,7 @@
     "lng": 120.5950,
     "address": "Upper Bonifacio Street, Baguio City",
     "directions": "🚶 Walk: From SM, go down to Upper Bonifacio St. (about 8–10 mins walk from Session Road).",
-    "images": ["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"]
+    "images": ["il-ilengan-cafe"]
   },
   {
     "id": "arcas-yard",
@@ -346,7 +346,7 @@
     "lng": 120.5930,
     "address": "Montinola Subdivision, Baguio City",
     "directions": "🚌 Jeepney: Board at Session Road or near Burnham Park terminal. Take jeepneys passing Kisad Road (Burnham → Kisad area). Fare: ₱13–₱15. Travel Time: 5–10 minutes. Get off at: Montinola Subdivision entrance, walk a few meters to café.",
-    "images": ["https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop"]
+    "images": ["marauders-brew-cafe"]
   },
   {
     "id": "rockyard-cafe",
@@ -370,7 +370,7 @@
     "lng": 120.5940,
     "address": "Easter Road, Baguio City",
     "directions": "🚌 Jeepney: Board at Session Road near Burnham Park. Take jeepneys heading to Easter Road/Manzanillo Subdivision. Fare: ₱13–₱15. Travel Time: 8–10 minutes. Get off at: Corner Easter Road and Road 1, short walk to café.",
-    "images": ["https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=400&h=300&fit=crop"]
+    "images": ["hatch-coffee"]
   },
   {
     "id": "sweet-stop",
@@ -382,7 +382,7 @@
     "lng": 120.5958,
     "address": "La Azotea Building, Session Road, Baguio City",
     "directions": "🚶 Walk: Distance: ~100 m from SM Baguio. Walking Time: 2–3 minutes. You are near if you see: La Azotea Building entrance along Session Road. 🚌 Jeepney: Any jeepney passing Session Road. Fare: ₱10. Get off at: La Azotea Building, Session Road.",
-    "images": ["https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&h=300&fit=crop"]
+    "images": ["sweet-stop"]
   },
   {
     "id": "flower-cafe",
@@ -394,7 +394,7 @@
     "lng": 120.5960,
     "address": "Lower Bonifacio, Baguio City",
     "directions": "🚌 Jeepney: Board at public market or Session Road terminal. Take jeepneys going to SLU/Ambuklao Road. Fare: ₱13–₱15. Travel Time: 5–8 minutes. Get off at: Sunrise Building, Lower Bonifacio.",
-    "images": ["https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop"]
+    "images": ["flower-cafe"]
   },
   {
     "id": "brew-alchemy",
@@ -406,7 +406,7 @@
     "lng": 120.5920,
     "address": "Trancoville, Baguio City",
     "directions": "🚌 Ride: From SM, go to Session Road → ride a Trancoville jeep (₱12). Ask to drop near Brgy. Trancoville, then 🚶 3 mins.",
-    "images": ["https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop"]
+    "images": ["brew-alchemy"]
   },
   {
     "id": "hygge-library-cafe",
@@ -418,7 +418,7 @@
     "lng": 120.5930,
     "address": "Amparo Heights corner Kennon Road, Camp 7, Baguio City",
     "directions": "🚌 Jeepney: Board at Camp 7 Jeepney terminal near Session Road (nearby landmarks: Jollibee Harrison/Baguio Patriotic High School). Fare: ₱12-15. Travel Time: 10-15 minutes. Get off at: Amparo Heights corner Kennon Road, Camp 7. Walk 2-4 minutes to café.",
-    "images": ["https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop"]
+    "images": ["hygge-library-cafe"]
   },
   {
     "id": "guesthaven-coffee",
@@ -430,7 +430,7 @@
     "lng": 120.6050,
     "address": "Km. 4, La Trinidad, Benguet",
     "directions": "🚌 Ride: From SM, go to Session Road → ride a La Trinidad jeep (₱15). Ask to drop near Km. 4, then 🚶 3 mins.",
-    "images": ["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"]
+    "images": ["guesthaven-coffee"]
   },
   {
     "id": "rebel-bakehouse",
@@ -442,6 +442,6 @@
     "lng": 120.5940,
     "address": "Gov. Pack Road, Baguio City",
     "directions": "🚶 Walk: From SM, head down Gov. Pack Road (same area as Hatch Coffee, 7–8 mins walk).",
-    "images": ["https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop"]
+    "images": ["rebel-bakehouse"]
   }
 ]

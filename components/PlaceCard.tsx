@@ -4,6 +4,7 @@ import { Star, MapPin, ExternalLink, Globe, X, ChevronLeft, ChevronRight } from 
 import { Place } from '@/types';
 import { openExternalUrl, openGoogleMapsUrl } from '@/lib/maps';
 import { useTheme } from '@/contexts/ThemeContext';
+import { getPlaceImageSource } from '@/lib/images';
 
 interface PlaceCardProps {
   place: Place;
@@ -21,13 +22,16 @@ export default function PlaceCard({ place }: PlaceCardProps) {
   const isRestaurant = place.type === 'Restaurant';
   const hasRealImages = place.images && place.images.length > 0;
   const hasPhoto = hasRealImages || isCafe || isAccommodation || isRestaurant;
-  const getPhotoUrl = () => {
+  const getImageSource = () => {
     if (hasRealImages && !imageError) {
-      return place.images![currentImageIndex];
+      // For now, we'll use the place ID as the image identifier
+      // This allows for easy mapping to local assets
+      const imageId = place.images![currentImageIndex];
+      return getPlaceImageSource(imageId);
     }
-    return `https://images.unsplash.com/photo-${getPhotoId(place.id)}?w=400&h=300&fit=crop`;
+    return getPlaceImageSource(place.id);
   };
-  const photoUrl = getPhotoUrl();
+  const imageSource = getImageSource();
   const hasMultipleImages = hasRealImages && place.images!.length > 1;
   const handleOpenMaps = () => {
     openGoogleMapsUrl(place.id);
@@ -68,68 +72,17 @@ export default function PlaceCard({ place }: PlaceCardProps) {
   };
 
   const handleImageError = () => {
-    console.log(`Image failed to load for ${place.name}:`, photoUrl);
+    console.log(`Image failed to load for ${place.name}:`, imageSource);
     setImageError(true);
   };
 
   const handleImageLoad = () => {
-    console.log(`Image loaded successfully for ${place.name}:`, photoUrl);
+    console.log(`Image loaded successfully for ${place.name}:`, imageSource);
     setImageLoaded(true);
     setImageError(false);
   };
 
-  function getPhotoId(id: string): string {
-    const photoMap: Record<string, string> = {
-      // Cafes
-      'kapetirya': '1554118811-1e0d58224f24',
-      'hotcat-specialty-coffee': '1501339847302-ac426a4a7cbb',
-      'taza-by-kayu': '1559056199-641a0ac8b55e',
-      'studio-cafe': '1521017432531-fbd92d768814',
-      'common-ground': '1442512595331-e89e73853f31',
-      'peakcup-coffee': '1495474472287-4d71bcdd2085',
-      'ginto-cafe': '1447933601403-0c6688de566e',
-      'scout-burrows': '1509042239860-f550ce710b93',
-      'il-ilengan-cafe': '1506905925346-21bda4d32df4',
-      'arcas-yard': '1501339847302-ac426a4a7cbb',
-      'marauders-brew-cafe': '1554118811-1e0d58224f24',
-      'rockyard-cafe': '1559056199-641a0ac8b55e',
-      'hatch-coffee': '1521017432531-fbd92d768814',
-      'sweet-stop': '1442512595331-e89e73853f31',
-      'flower-cafe': '1495474472287-4d71bcdd2085',
-      'brew-alchemy': '1447933601403-0c6688de566e',
-      'hygge-library-cafe': '1509042239860-f550ce710b93',
-      'guesthaven-coffee': '1506905925346-21bda4d32df4',
-      'rebel-bakehouse': '1501339847302-ac426a4a7cbb',
-      // Accommodations
-      'kamiseta-hotel': '1566073112-1c3b4c71c1c8',
-      'secret-cabin-baguio': '1520250497591-112f2f40a3f4',
-      'cozynest-rentals': '1571896349842-33c89424de2d',
-      'metro-pines-inn': '1564501049229-cc18ee5aef86',
-      'whitehouse-lord-scents': '1582719478250-c89cae4dc85b',
-      'atenara-house': '1520637736862-4d197d17c93a',
-      'red-lion-pub-inn': '1551882547-a62d0657a5d6',
-      '1896-bb': '1586023492675-c216d39128aa',
-      'valencia-baguio-transient': '1520250497591-112f2f40a3f4',
-      'st-john-inn': '1566073112-1c3b4c71c1c8',
-      'jalo-naja-apartelles': '1571896349842-33c89424de2d',
-      'baguio-holiday-villas': '1564501049229-cc18ee5aef86',
-      'pine-breeze-cottages': '1582719478250-c89cae4dc85b',
-      // Restaurants
-      'ozark-diner-bnb': '1414728735-6f71dcaae5bd',
-      'qilla-restaurant': '1565299507-6678700f2ef2',
-      'ili-likha-artists-village': '1504674900-24d2d516e702',
-      'chaya-restaurant': '1579871734-a35c0844ec25',
-      'farmers-daughter-restaurant': '1504674900-24d2d516e702',
-      'good-taste-legarda': '1414728735-6f71dcaae5bd',
-      'cafe-by-ruins-dua': '1565299507-6678700f2ef2',
-      'mamas-table': '1579871734-a35c0844ec25',
-      'oh-my-gulay': '1504674900-24d2d516e702',
-      'hill-station': '1414728735-6f71dcaae5bd',
-      'canto-bogchi-joint': '1565299507-6678700f2ef2',
-      'arcas-yard-restaurant': '1579871734-a35c0844ec25'
-    };
-    return photoMap[id] || '1554118811-1e0d58224f24';
-  }
+
 
   return (
     <>
@@ -142,12 +95,11 @@ export default function PlaceCard({ place }: PlaceCardProps) {
         {hasPhoto && (
           <View style={styles.photoContainer}>
             <Image 
-              source={{ uri: photoUrl }} 
+              source={imageSource} 
               style={styles.placePhoto}
               resizeMode="cover"
               onError={handleImageError}
               onLoad={handleImageLoad}
-
             />
             {!imageLoaded && !imageError && (
               <View style={styles.imageLoadingOverlay}>
@@ -265,12 +217,11 @@ export default function PlaceCard({ place }: PlaceCardProps) {
             <ScrollView style={styles.modalContent}>
               <View style={styles.modalPhotoContainer}>
                 <Image 
-                  source={{ uri: photoUrl }} 
+                  source={imageSource} 
                   style={styles.modalPhoto}
                   resizeMode="cover"
                   onError={handleImageError}
                   onLoad={handleImageLoad}
-
                 />
                 {!imageLoaded && !imageError && (
                   <View style={[styles.imageLoadingOverlay, styles.modalLoadingOverlay]}>
