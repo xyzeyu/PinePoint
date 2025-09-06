@@ -4,7 +4,7 @@ import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import { initializeGooglePhotos } from "@/lib/images";
+
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,20 +23,8 @@ function RootLayoutNav() {
 
 export default function RootLayout() {
   useEffect(() => {
-    const initializeApp = async () => {
-      try {
-        // Initialize Google Photos integration
-        await initializeGooglePhotos();
-        console.log('Google Photos integration initialized');
-      } catch (error) {
-        console.error('Failed to initialize Google Photos:', error);
-      } finally {
-        // Hide splash screen after initialization
-        SplashScreen.hideAsync();
-      }
-    };
-    
-    initializeApp();
+    // Hide splash screen after app is ready
+    SplashScreen.hideAsync();
   }, []);
 
   return (
